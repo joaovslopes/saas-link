@@ -10,16 +10,16 @@ const userSchema = new Schema({
     },
     name: { type: String },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    domain: { type: [String], default: [] },
+    password: { type: String, required: true }
+    ,
     accountType: {
         type: String,
         enum: ['bronze', 'silver', 'gold'],
-        default: 'bronze' // Tipo de conta padrão
+        default: 'bronze' 
     },
     domainsLimit: {
         type: Number,
-        default: 1, // Limite padrão para conta bronze
+        default: 1,
         validate: {
             validator: function(value) {
                 if (this.accountType === 'bronze') {

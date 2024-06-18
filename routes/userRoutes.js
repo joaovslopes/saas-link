@@ -6,7 +6,6 @@ const { registerUser, addDomain } = require('../controllers/userController');
 
 router.post('/register', registerUser);
 
-
 router.post('/add-domain', addDomain);
 
 module.exports = router;
