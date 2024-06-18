@@ -37,14 +37,14 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/add-domain', async (req, res) => {
-    const { email, domain } = req.body;
+    const { accountId, domain } = req.body;
 
-    if (!email || !domain) {
-        return res.status(400).json({ msg: 'Por favor, forneça o email e o domínio' });
+    if (!accountId || !domain) {
+        return res.status(400).json({ msg: 'Por favor, forneça o accountId e o domínio' });
     }
 
     try {
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ accountId });
 
         if (!user) {
             return res.status(404).json({ msg: 'Usuário não encontrado' });
