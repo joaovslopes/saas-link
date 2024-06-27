@@ -4,19 +4,18 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const urlRoute = require('./routes/url')
 const config = require('./config');
+const URL = require('./models/url')
 
 const app = express();
 
 app.use(bodyParser.json());
 
 mongoose.connect(config.mongoURI)
-    .then(() => console.log('MongoDB conectado'))
-    .catch(err => console.log(err));
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => console.log(err));
 
 app.use('/api/user', userRoutes);
-
-
-app.use("/url", urlRoute);
+app.use("/api/url", urlRoute);
 
 
 app.get("/:shortId", async (req, res) => {
